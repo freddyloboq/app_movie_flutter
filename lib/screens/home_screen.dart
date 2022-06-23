@@ -15,8 +15,11 @@ class HomeScreen extends StatelessWidget {
             IconButton(onPressed: () {}, icon: Icon(Icons.search_outlined))
           ],
         ),
-        body: Column(
-          children: [CardSwiperScreen()],
+        //El SingleChildScrollView es para poder hacer scroll en la app. Sino se corta y muestra un error.
+        body: SingleChildScrollView(
+          child: Column(
+            children: [CardSwiperScreen(), MovieSlider()],
+          ),
         ));
   }
 }

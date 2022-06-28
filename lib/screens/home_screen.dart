@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:app_movies_flutter/widgets/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:app_movies_flutter/providers/movies_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   // const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final moviesProvider = Provider.of<MoviesProvider>(context);
+    print(moviesProvider.onDisplayMovies);
+
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -18,7 +23,10 @@ class HomeScreen extends StatelessWidget {
         //El SingleChildScrollView es para poder hacer scroll en la app. Sino se corta y muestra un error.
         body: SingleChildScrollView(
           child: Column(
-            children: [CardSwiperScreen(), MovieSlider()],
+            children: [
+              CardSwiperScreen(movies: moviesProvider.onDisplayMovies),
+              MovieSlider()
+            ],
           ),
         ));
   }

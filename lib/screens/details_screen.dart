@@ -1,3 +1,4 @@
+import 'package:app_movies_flutter/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:app_movies_flutter/themes/themes.dart';
 import 'package:app_movies_flutter/widgets/widgets.dart';
@@ -7,8 +8,8 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String movie =
-        ModalRoute.of(context)?.settings.arguments.toString() ?? 'no-movie';
+    final Movie movie = ModalRoute.of(context)!.settings.arguments as Movie;
+    // print(movie.title);
 
     return Scaffold(
         body: CustomScrollView(
@@ -39,15 +40,15 @@ class _CustomAppBar extends StatelessWidget {
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
-        titlePadding: EdgeInsets.all(0),
+        titlePadding: const EdgeInsets.all(0),
         title: Container(
           width: double.infinity,
           alignment: Alignment.bottomCenter,
-          padding: EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 10),
           color: Colors.black26,
           child: Text(
             'movie.title',
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
         ),
         background: const FadeInImage(
